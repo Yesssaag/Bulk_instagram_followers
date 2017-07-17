@@ -12,22 +12,34 @@ from follow_protocol import follow_protocol
 from instabot import InstaBot
 from unfollow_protocol import unfollow_protocol
 
+USERNAME = "*username*";
+PASSWORD = "*password*";
+RATE_LIMIT_LIKE_PER_DAY = 2;
+RATE_LIMIT_COMMENTS_PER_DAY = 6;
+RATE_LIMIT_FOLLOW_PER_DAY = 600;
+RATE_LIMIT_UNFOLLOW_PER_DAY = 4;
+RATE_LIMIT_LIKE_PER_TAG = 4;
+MY_PROXY = '';
+
+
+
+
 bot = InstaBot(
-    login="username",
-    password="pass",
-    like_per_day=2,
-    comments_per_day=6,
+    login=USERNAME,
+    password=PASSWORD,
+    like_per_day=RATE_LIMIT_LIKE_PER_DAY,
+    comments_per_day=RATE_LIMIT_COMMENTS_PER_DAY,
     tag_list=['follow4follow', 'f4f', 'cute'],
     tag_blacklist=['rain', 'thunderstorm'],
     user_blacklist={},
-    max_like_for_one_tag=4,
-    follow_per_day=600,
+    max_like_for_one_tag=RATE_LIMIT_LIKE_PER_TAG,
+    follow_per_day=RATE_LIMIT_FOLLOW_PER_DAY,
     follow_time=1 * 999,
-    unfollow_per_day=4,
+    unfollow_per_day=RATE_LIMIT_UNFOLLOW_PER_DAY,
     unfollow_break_min=4,
     unfollow_break_max=5,
     log_mod=0,
-    proxy='',
+    proxy = MY_PROXY,
     # List of list of words, each of which will be used to generate comment
     # For example: "This shot feels wow!"
     comment_list=[["this", "the", "your"],
@@ -56,14 +68,13 @@ bot = InstaBot(
 while True:
 
 
-    mode = 1
-    if mode == 1:  
+    mode = 1;
+    if mode == 1:
         client = (3550066610) #the client is the instagram ID for whoever you want your botnet to follow you can just google find ig id
         bot = InstaBot(login="user", password="pass")
-        bot.follow(client)
-        bot.logout()
-        time.sleep(30)
-        bot = InstaBot(login="user", password="pass") 
-        bot.follow(client)
-        bot.logout() #basically your repeating the same code except each time your inputting a different username and pass, this way you can login with multiple accounts and follow one account
-        
+        bot.follow(client);
+        bot.logout();
+        time.sleep(30);
+        bot = InstaBot(login="user", password="pass");
+        bot.follow(client);
+        bot.logout(); #basically your repeating the same code except each time your inputting a different username and pass, this way you can login with multiple accounts and follow one account
